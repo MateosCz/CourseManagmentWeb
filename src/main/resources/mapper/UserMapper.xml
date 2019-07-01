@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.demo.DAO.UserMapper">
+    <resultMap id="UserResultMap" type="com.test.demo.Bean.UserBean">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="userID" property="userID" jdbcType="VARCHAR"/>
+        <result column="upassword" property="password" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="getUserByID" resultMap="UserResultMap">
+        select userID,uPassword from kouUser
+        <where>
+            userID = #{userID}
+            and upassword = #{password}
+        </where>
+    </select>
+</mapper>
